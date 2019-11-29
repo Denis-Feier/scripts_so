@@ -13,9 +13,9 @@ then
         then
             l=`cat $i | egrep '^[A-Za-z0-9,. ]*$' | grep "^[A-Z]" | egrep "\.$" | grep -v ",[ ]*si[ ]" | grep -v "[.].+$" | wc -l`
             echo $i $l >> $file
-        elif test -d
+        elif test -d $i
         then
-            n=`bash $0 $1 $2`
+            n=`bash $0 $1 $i`
             leg=`expr $leg + $n`
         fi
     done
