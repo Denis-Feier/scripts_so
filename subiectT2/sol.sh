@@ -21,9 +21,10 @@ then
                     cnt=0
                     for i in $line/*
                     do
-                        if test -h $i && echo $i | grep -q "^$line/[A-Z][A-Za-z]*$"
+                        if test -h $i && echo $i | grep "^$line/[A-Z]" | egrep -v -q "^$line/(.*)[0-9]" 
                         then
                             cnt=`expr $cnt + 1`
+                            echo $i
                         fi
                     done
                     echo "$line: $cnt legaturi" >> $file 
